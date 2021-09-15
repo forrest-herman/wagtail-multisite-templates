@@ -1,0 +1,88 @@
+{% load static wagtailcore_tags %} {% if parent.page_template == "minimalistic" %}
+<footer id="footer" class="v-padding-small bg-color-{{parent.footer_bg_color}}">
+    <div class="container-footer">
+        <div class="row justify-content-center">
+            {% if parent.footer_image %}
+            <div class="col-12 col-md-2 footer-logo my-auto">
+                <img src="{{parent.footer_image.url}}" class="float-md-end d-flex mx-auto" />
+            </div>
+            {% endif %}
+            <div class="col-12 col-md-10 footer-copyright" id="footertext">
+                {{parent.footer_text_copyright|richtext}}
+                <script>
+                    const currentDate = new Date().getFullYear()
+                    document.getElementById("footertext").innerHTML = document.getElementById("footertext").innerHTML.replace("DATE_VALUE", currentDate)
+                </script>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% elif parent.page_template == "classic" or parent.page_template == "modern" %}
+<footer id="footer" class="{% if parent.page_template == "modern" %}margin-top-large{% endif %} v-padding-large bg-color-{{parent.footer_bg_color}}">
+    <div class="container footer">
+        {% for design in parent.footer_design_stream %} {% comment %} parent.footer_design_stream[0] {% endcomment %}
+
+        <div class="row justify-content-center align-items-start">
+            <div class="col-12 col-sm-4">
+                <div class="d-flex flex-column align-items-center align-items-sm-start width-fit-content m-auto ms-sm-0">
+                    {% if parent.footer_image.url %}
+                    <img class="footer-logo" src="{{parent.footer_image.url}}" style="max-width: 200px" />
+                    {% elif design.value.footer_heading_1 %}
+                    <h5>{{design.value.footer_heading_1}}</h5>
+                    {% else %}
+                    <h5>{{parent.site_title}}</h5>
+                    {% endif %}
+
+                    <p>{{design.value.footer_text_1|richtext}}</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4">
+                <div class="d-flex flex-column align-items-center align-items-sm-start width-fit-content m-auto">
+                    <h5>{{design.value.footer_heading_2}}</h5>
+                    <p>{{design.value.footer_text_2|richtext}}</p>
+
+                    {% if design.value.social_links_stream_container %}
+                    <div>
+                        <ul class="social-icons">
+                            {% for social_link in design.value.social_links_stream_container %}
+                            <li>
+                                <a href="{{social_link.value.link}}" target="_blank"><i class="{{social_link.value.icon}}"></i></a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-sm-4">
+                <div class="d-flex flex-column align-items-center align-items-sm-start width-fit-content m-auto">
+                    <h5>{{design.value.footer_heading_3}}</h5>
+                    <ul class="footer-menu">
+                        {% for link in design.value.page_links_stream_container %}
+                        <li class="text-center text-sm-start">
+                            <a class="transition-padding-left" href="{{link.value.link}}">{{link.value.text}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if parent.footer_text_copyright and parent.footer_design_stream %}
+        <hr />
+        {% endif %}
+        {% if parent.footer_text_copyright %}
+        <div class="row justify-content-center text-center">
+            <div class="col col-12 footer-copyright" id="footertext">
+                {{parent.footer_text_copyright|richtext}}
+                <script>
+                    const currentDate = new Date().getFullYear()
+                    document.getElementById("footertext").innerHTML = document.getElementById("footertext").innerHTML.replace("DATE_VALUE", currentDate)
+                </script>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</footer>
+{% endif %}

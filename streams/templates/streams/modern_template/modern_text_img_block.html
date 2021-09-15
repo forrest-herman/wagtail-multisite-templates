@@ -1,0 +1,19 @@
+<section id="image-paragraph-section" class="margin-top-large">
+    <div class="row m-0 d-flex justify-content-center align-items-center">
+        {% if self.img %}
+        <div class="row overflow-visible position-absolute margin-top-large margin-bottom-large d-none d-sm-block">
+            <div class="col-6 {% if self.img_position == "right" %}offset-6{% endif %} d-flex justify-content-center">
+                <img class="section-box-shadow" style="width: 90%; max-width: {{self.img_max_width}}px" src="{{self.img.url}}" alt="" />
+            </div>
+        </div>
+        {% endif %}
+        <div class="section-box section-box-shadow bg-color-1">
+            <div class="row justify-content-{% if self.img and self.img_position == "left" %}end{% elif self.img and self.img_position == "right" %}start{% else %}center{% endif %} align-items-center">
+                <div class="col-12 {% if self.img %}col-sm-6{% endif %} height-fit-content mb-sm-0 mb-4">
+                    <p class="{{self.text_align}}">{{self.paragraph}}</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

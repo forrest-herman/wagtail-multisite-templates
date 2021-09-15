@@ -1,0 +1,22 @@
+<section id="img-section-readmore-left" class="margin-top-large section-box-shadow box-picture" style="background-image: url({{self.bg_img.url}})">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center {% if self.long_title_TRUE %}section-long-title section-long-title-offset{% else %}section-short-title-offset{% endif %}">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="" {% if self.long_title_TRUE %}style="float: left"{% endif %}>{{self.title1}} </span>{% endif %}
+            {% if self.long_title_TRUE %}<br />{% endif %}
+            {% if self.title2 %}<span class="text-color2" {% if self.long_title_TRUE %}style="float: right"{% endif %}>{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %}
+    <div class="section-box {{self.content_align}}">
+        <div class="bubble bg-color-{{self.bg_color}}">
+            {% if self.paragraph %}<p>{{self.paragraph}}</p>{% endif %}
+        </div>
+        {% if self.btn_text %}
+        <div class="readmore-card translate-{% if self.content_align == "left" %}right{% else %}left{% endif %} {{self.content_align}} bg-color-{{self.btn_color}}">
+            <a href="{{self.btn_link}}"><h4>{{self.btn_text}}</h4></a>
+        </div>
+        {% endif %}
+    </div>
+</section>

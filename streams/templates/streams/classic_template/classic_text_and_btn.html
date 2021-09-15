@@ -1,0 +1,19 @@
+<!-- Classic Site Text and Button Section -->
+
+<section class="v-padding-large">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-9 offset-lg-1 section-title">
+                <h2 class="text-start">{{self.title}}</h2>
+                {% if self.paragraph %}
+                <p>{{self.paragraph}}</p>
+                {% endif %}
+            </div>
+            <div class="col-md-3 mt-3 mt-md-0 align-items-center">
+                {% if self.btn_text %}
+                <a class="btn btn-color-1" href="{{self.btn_link}}"><h4>{{self.btn_text}}</h4></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

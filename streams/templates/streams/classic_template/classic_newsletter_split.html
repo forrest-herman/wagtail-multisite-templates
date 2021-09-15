@@ -1,0 +1,30 @@
+<!-- Classic - Newsletter Split -->
+
+<section id="img-form-split-right" class="bg-color-{{self.bg_color}}">
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center">
+
+            {% for col in "x"|ljust:"2" %}
+
+            <div class="col-md-6 section-title half-text-block-container h-padding-large-md v-padding-large height-fit-content col-bg-image  {% if self.img_position == "right" and forloop.counter == 2 or self.img_position == "left" and forloop.counter == 1 %}hidden-childs" style="background-image: url({{self.half_img.url}})"{% else %}"{% endif %}>
+                <h2 class="text-start">{{self.title}}</h2>
+                <p>{{self.section_paragraph}}</p>
+                <div class="row form-group">
+                    <div class="col-12">
+                        <input type="email" id="email" class="form-control no-outline" placeholder="Your email address" required="" />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div>
+                            <input type="submit" value="{{self.btn_text}}" class="btn btn-color-{% if self.bg_color == "1" %}2{% else %}1{% endif %} btn-sm btn-wide" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            {% endfor %}
+        </div>
+    </div>
+</section>

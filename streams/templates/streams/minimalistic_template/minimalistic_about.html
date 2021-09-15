@@ -1,0 +1,21 @@
+<!-- About -->
+<section id="about" class="v-padding-small bg-color-{{self.bg_color}}">
+    <div class="container">
+        <div class="row about">
+            <div class="col col-12 col-md-6 img-about">
+                <img class="img-fluid" src="{{self.about_image.url}}" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <h6>{{self.title_1}}</h6>
+                <br />
+                <h2>{{self.title_2}}</h2>
+                <br />
+                <p>{{self.about_paragraph}}</p>
+                <br />
+                {% if self.btn_text %}<a class="btn btn-color-{{self.btn_color}}" href="{{self.btn_link}}" role="button">
+                    <h5>{{self.btn_text}} {% if self.btn_icon %}<i class="{{self.btn_icon}} chat-icon"></i>{% endif %}</h5></a
+                >{% endif %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,14 @@
+<section id="hero" style="background-image: url({{self.hero_image.url}})">
+    <div class="container container-sm">
+        <div class="row hero">
+            <div class="col-12 d-flex justify-content-start align-items-center">
+                <div class="hero-title text-left">
+                    <h1>
+                        {% for word in self.title.split %} {{word}} <br />
+                        {% endfor %}
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

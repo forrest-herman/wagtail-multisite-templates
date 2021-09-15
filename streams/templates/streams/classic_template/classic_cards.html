@@ -1,0 +1,27 @@
+<!-- classic_service_cards -->
+
+<section class="v-padding-large bg-color-1">
+    <div class="container-lg container-fluid">
+        <div class="row">
+            <div class="col section-title">
+                <h2>{{self.title}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for card in self.services_container %}
+            <div class="col-12 col-sm col-card">
+                <div class="card equal-height {% if self.services_settings.show_card_bg %}bg-color-{{self.services_settings.bg_color}}{% else %}card-no-bg{% endif %}">
+                    <div class="card-icon">
+                        <h2><i class="{{card.value.icon}}"></i></h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-text text-center">{{card.value.title}}</h4>
+                        <p class="text-center">{{card.value.paragraph}}</p>
+                        {% if card.value.btn_text %} <a class="btn btn-color-2 mt-3" href="{{card.value.btn_link}}"><h5>{{card.value.btn_text}}</h5></a>{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

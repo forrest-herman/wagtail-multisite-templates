@@ -1,0 +1,14 @@
+<!-- Classic Hero section -->
+<section id="hero" style="background-image: url({{self.hero_image.url}})">
+    <div class="container container-sm">
+        <div class="row hero">
+            <div class="col-12 d-flex justify-content-start align-items-center">
+                <div class="hero-title text-left text-shadow">
+                    <h1 class="mb-3">{{self.title}}</h1>
+                    <h3 class="hero-subtitle">{{self.subtitle}}</h3>
+                    {% if self.btn_text %}<a class="btn btn-color-1 btn-lg mt-4" href="{{self.btn_link}}"><h4>{{self.btn_text}}</h4></a>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+<section id="about" class="v-padding-large">
+    <div class="container testimonials">
+        <div class="row">
+            <div class="col section-title">
+                <h2>{{self.title}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for testimonial in self.testimonials_container %}
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="card equal-height bg-color-{{self.card_bg_color}}">
+                    <i class="fa fa-quote-left fa-3x card-img-top rounded-circle bg-color-{{self.quote_bg_color}}" aria-hidden="true"></i>
+                    <div class="card-body blockquote">
+                        <p class="card-text">{{testimonial.value.text}}</p>
+                        <div class="blockquote-footer"><cite title="Source Title">{{testimonial.value.author}}</cite></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

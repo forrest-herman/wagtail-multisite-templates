@@ -1,0 +1,26 @@
+<section id="quote-section-long-title-readmore" class="margin-top-large">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center {% if self.long_title_TRUE %}section-long-title section-long-title-offset{% else %}section-short-title-offset{% endif %}">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="" {% if self.long_title_TRUE %}style="float: left"{% endif %}>{{self.title1}} </span>{% endif %}
+            {% if self.long_title_TRUE %}<br />{% endif %}
+            {% if self.title2 %}<span class="text-color2" {% if self.long_title_TRUE %}style="float: right"{% endif %}>{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %}
+    <div class="section-box section-box-shadow bg-color-1">
+        <div class="bubble bg-color-default">
+            <blockquote>
+                <p class="{{self.text_align}}">
+                    {{self.paragraph}}
+                </p>
+            </blockquote>
+        </div>
+    </div>
+    {% if self.btn_text %}
+    <div class="readmore-card translate-{% if self.btn_align == "left" %}right{% else %}left{% endif %} {{self.btn_align}} bg-color-{{self.btn_color}}">
+        <a href="{{self.btn_link}}"><h4>{{self.btn_text}}</h4></a>
+    </div>
+    {% endif %}
+</section>

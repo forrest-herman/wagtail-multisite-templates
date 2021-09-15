@@ -1,0 +1,72 @@
+<!-- Testimonials -->
+<!-- prettier-ignore -->
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<!-- prettier-ignore -->
+{% block content %}
+<!-- prettier-ignore -->
+<section id="testimonials" class="v-padding-small bg-color-{{self.bg_color}}">
+    <div class="container">
+        <div class="row">
+            <h2>{{value.title}}</h2>
+        </div>
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+
+                    {% for i in self.testimonials_container %}
+                    <button
+                        type="button"
+                        data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide-to="{{forloop.counter0}}"
+
+                        {% if forloop.counter0 == 0 %}
+                        class="active"
+                        aria-current="true"
+                        {% endif %}
+
+                        aria-label="Slide {{forloop.counter0}}"
+                    ></button>
+                    {% endfor %}
+                </div>
+
+                <div class="carousel-inner">
+                    
+                    {% for item in self.testimonials_container %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+                        <div class="bubble" >
+                            <blockquote class="bg-color-default">
+                                <p>
+                                    {{item.value.text}}
+                                </p>
+                            </blockquote>
+                            <div></div>
+                            <p class="cite" style="color: var(--bgcolor)">{{item.value.author}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next"
+                >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

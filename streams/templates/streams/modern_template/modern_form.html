@@ -1,0 +1,35 @@
+<section id="img-section-form" class="margin-top-large section-box-shadow box-picture" style="background-image: url({{self.bg_img.url}})">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center {% if self.long_title_TRUE %}section-long-title section-long-title-offset{% else %}section-short-title-offset{% endif %}">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="" {% if self.long_title_TRUE %}style="float: left"{% endif %}>{{self.title1}} </span>{% endif %}
+            {% if self.long_title_TRUE %}<br />{% endif %}
+            {% if self.title2 %}<span class="text-color2" {% if self.long_title_TRUE %}style="float: right"{% endif %}>{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %}
+    <div class="section-box">
+        <div class="bubble {% if self.show_form_bg %}bg-color-default{% endif %}">
+            <form action="{{self.form_action}}" class="form-connect">
+                {% for field in self.formfields_stream_container %}
+                <div class="row form-group">
+                    <div class="col-12">
+                        {% if field.value.label %}<label for="{{field.value.field_id}}">{{field.value.label}}</label>{% endif %}
+                        <!-- prettier-ignore -->
+                        <{% if field.value.field_type == "message" %}textarea cols="5" rows="3"{% else %}input{% endif %} type="{{field.value.field_type}}" id="{{field.value.field_id}}" name="{{field.value.field_name}}" class="form-control resize-none {% if not self.show_form_bg %}no-outline{% endif %}" placeholder="{{field.value.placeholder}}" {% if field.value.is_required %}required=""{% endif %} {% if field.value.field_type == "message" %}></textarea>{% else %}/>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="readmore-card translate-right invert bg-color-{{self.btn_color}}">
+                            <input type="submit" value="{{self.btn_text}}" class="btn btn-form" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

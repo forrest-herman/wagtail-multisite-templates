@@ -1,0 +1,36 @@
+<section id="card-section-short-title" class="margin-top-large">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center {% if self.long_title_TRUE %}section-long-title section-long-title-offset{% else %}section-short-title-offset{% endif %}">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="" {% if self.long_title_TRUE %}style="float: left"{% endif %}>{{self.title1}} </span>{% endif %}
+            {% if self.long_title_TRUE %}<br />{% endif %}
+            {% if self.title2 %}<span class="text-color2" {% if self.long_title_TRUE %}style="float: right"{% endif %}>{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %}
+    <div class="row section-box {% if self.title1 or self.title2 %}box-top-padding-short-title{% endif %} section-box-shadow bg-color-1">
+        {% for card in self.services_container %}
+        <div class="col-md-4">
+            <div class="card{% if self.show_card_body_on_hover %} card-hover-reveal{% endif %}">
+                <div class="card-icon">
+                    {% if card.value.icon %}
+                    <h2><i class="{{card.value.icon}}"></i></h2>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    {% if card.value.title %}
+                    <h3 class="card-title">{{card.value.title}}</h3>
+                    {% endif %} {% if card.value.paragraph %}
+                    <h5 class="card-text text-center">{{card.value.paragraph}}</h5>
+                    {% endif %} {% if card.value.btn_text %}
+                    <div class="readmore-card translate-right bg-color-2 invert-color1 mt-3">
+                        <a href="{{card.value.btn_link}}"><h5>{{card.value.btn_text}}</h5></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

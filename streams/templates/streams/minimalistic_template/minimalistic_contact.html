@@ -1,0 +1,11 @@
+<!-- Contact -->
+<section id="contact" class="v-padding-small bg-color-{{self.bg_color}}" style="background-image: url({{self.section_bg_image.url}});">
+    <div class="container">
+        <div class="row contact">
+            <h2 style="color: {{self.font_color_override}}">{{self.title}}</h2>
+            {% if self.section_subtitle %}
+            <p style="color: {{self.font_color_override}}">{{self.section_subtitle}}</p>
+            {% endif %} {{self.html_body}}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,24 @@
+<!-- Services -->
+<section id="services" class="v-padding-small bg-color-{{self.bg_color}}">
+    <div class="container">
+        <div class="row">
+            <h2>{{self.title}}</h2>
+        </div>
+        <div class="row service-cards">
+            {% for card in self.services_container %}
+
+            <div class="card {% if self.services_settings.show_card_bg %}bg-color-{{self.services_settings.bg_color}}{% else %}card-no-bg{% endif %}">
+                <div class="card-icon"><i class="{{card.value.icon}}"></i></div>
+                <div class="card-body">
+                    <h3 class="card-title">{{card.value.title}}</h3>
+                    <p class="card-text">{{card.value.paragraph}}</p>
+                    {% if card.value.btn_text %}<a href="{{card.value.btn_link}}"
+                        ><button class="btn btn-color-{{self.btn_color}} mt-3"><h5>{{card.value.btn_text}}</h5></button></a
+                    >{% endif %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>

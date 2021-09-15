@@ -1,0 +1,43 @@
+<!-- Classic - Testimonials Carousel -->
+
+<section id="testimonials" class="v-padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 section-title pb-5">
+                <h2 class="text-start">{{self.title}}</h2>
+                {% if self.btn_text %}<a class="btn btn-color-1 btn-sm mt-3" href="{{self.btn_link}}"><h5>{{self.btn_text}}</h5></a>{% endif %}
+            </div>
+            <div class="col-md-6">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for item in self.testimonials_container %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+                            <div class="bubble">
+                                <blockquote>
+                                    <p>
+                                        {{item.value.text}}
+                                    </p>
+                                </blockquote>
+                                <div class="blockquote-footer"><cite>{{item.value.author}}</cite></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-indicators">
+                        {% for i in self.testimonials_container %}
+                        <button 
+                            type="button" 
+                            data-bs-target="#carouselExampleIndicators" 
+                            data-bs-slide-to="{{forloop.counter0}}" 
+                            {% if forloop.counter0 == 0 %}
+                            class="active" aria-current="true"
+                            {% endif %} 
+                            aria-label="Slide {{forloop.counter0}}">
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+{% load static wagtailuserbar wagtailcore_tags %} {% wagtail_site as current_site %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <!-- Format: Page - Site Title -->
+        <!-- if parent.page_title ... then... parent.page_title - site_title -->
+        <title>{{ parent.site_title }}</title>
+        <meta name="description" content="" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="{{parent.site_favicon.url}}" type="image/x-icon" />
+
+        {# Global stylesheets #}
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css"
+            integrity="sha384-iKbFRxucmOHIcpWdX9NTZ5WETOPm0Goy0WmfyNcl52qSYtc2Buk0NCe6jU1sWWNB"
+            crossorigin="anonymous"
+        />
+
+        <!-- Fonts -->
+        {% for font in parent.html_head_import_stream %} {% include_block font %} {% endfor %}
+
+        <!-- Stylesheets -->
+        <style>
+            :root{
+                --color1: {{parent.color1}};
+                --color2: {{parent.color2}};
+                --color3: {{parent.color3}};
+                --bgcolor: {{parent.bg_color}};
+                --nav_bgcolor: {{parent.nav_bg_color}};
+
+                --default_font_color: {{parent.default_font_color}};
+                --bg_1_font_color: {{parent.bg_1_font_color}};
+                --bg_2_font_color: {{parent.bg_2_font_color}};
+                --bg_3_font_color: {{parent.bg_3_font_color}};
+                --default_font: {{parent.default_font}}, sans-serif;
+                --hero_font_color: {% if parent.default_hero_font_color  %} {{parent.default_hero_font_color}} {% else %} var(--default_font_color) {% endif %};
+
+                --font_weight_heavy: {{parent.font_weight_heavy}};
+                --font_weight_medium: {{parent.font_weight_medium}};
+                --font_weight_light: {{parent.font_weight_light}};
+
+                --root_font_size: {{parent.root_font_size}}px;
+
+                --nav_height: {{parent.nav_height}}px;
+                --page_top_offset: {% if parent.nav_bg_transparent and page.type == "HomePage" %}0px{% else %}calc(var(--nav_height) + 2rem){% endif %};
+                --nav_logo_max_size: {{parent.nav_logo_max_size}}px;
+                --footer_logo_max_height: {{parent.footer_logo_max_size}}px;
+
+                --nav_text_color: {% if parent.nav_text_color  %} {{parent.nav_text_color}} {% else %} var(--default_font_color) {% endif %};
+                --nav_text_color_hover: {% if parent.nav_text_color_hover  %} {{parent.nav_text_color_hover}} {% else %} var(--color2) {% endif %};
+                --nav_text_size: {{parent.nav_font_size}};
+
+                --default_transition_duration_long: 0.6s;
+                --default_transition_duration: 0.3s;
+                --default_transition_duration_short: 0.1s;
+
+                --loader_bg: url({{parent.site_loader_image.url}}) center no-repeat {{parent.site_loader_bg_color}};
+            }
+        </style>
+        <link rel="stylesheet" href="{% static 'css/core.css' %}" />
+        <link rel="stylesheet" href="{% static '' %}css/{{parent.page_template}}_styles.css" />
+
+        {% block extra_css %} {# Override this in templates to add extra stylesheets #} {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %} {% include "includes/navigation.html" %}
+
+        <!-- prettier-ignore -->
+        {% block content %}{% endblock %} 
+        
+        {% if parent.footer_enabled %}
+        {% include "includes/footer.html" %}
+        {% endif %}
+
+        {# Global javascript #}
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+            crossorigin="anonymous"
+        ></script>
+        <!-- <script type="text/javascript" src="{% static 'js/main.js' %}"></script> -->
+        <script type="text/javascript" src="{% static 'js/core.js' %}"></script>
+
+        <link rel="stylesheet" href="{% static '' %}js/{{parent.page_template}}_script.js" />
+
+        {% block extra_js %} {# Override this in templates to add extra javascript #} {% endblock %}
+    </body>
+</html>

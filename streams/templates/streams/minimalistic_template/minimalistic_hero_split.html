@@ -1,0 +1,26 @@
+<!-- Hero section -->
+<section id="hero">
+    <div class="container container-sm">
+        <div class="row hero">
+            <div class="col-6 col-hero col-hero-title">
+                <div class="hero-title">
+                    <h1 {% if self.title_color %}style="color:{{self.title_color}}" {% endif %}>{{self.title}}</h1>
+                    <h3 {% if self.subtitle_color %}style="color:{{self.subtitle_color}}" {% endif %}>{{self.subtitle}}</h3>
+                    {% if self.btn_text %}<a href="{{self.btn_link}}" class="mt-4"
+                        ><button class="btn btn-color-{{self.btn_color}}"><h5>{{self.btn_text}}</h5></button></a
+                    >{% endif %}
+                </div>
+            </div>
+            <div class="col-6 col-hero position-relative">
+                <div class="col-hero">
+                    <img src="{{self.hero_image.url}}" alt="cover-photo" />
+                </div>
+                {% if self.circle_top_color %}
+                <div class="circle blue" style="background-color:{{self.circle_top_color}};"></div>
+                {% endif %} {% if self.circle_bottom_color %}
+                <div class="circle red" style="background-color:{{self.circle_bottom_color}};"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

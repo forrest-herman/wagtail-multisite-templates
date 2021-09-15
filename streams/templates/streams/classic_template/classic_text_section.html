@@ -1,0 +1,20 @@
+<!-- Classic Site Intro -->
+
+<section id="about" class="{% if self.fit_below_sub_hero_TRUE %} margin-bottom-large {% else %} v-padding-large {% endif %}">
+    <div class="container">
+        {% if self.title %}
+        <div class="row">
+            <div class="col section-title">
+                <h2>{{self.title}}</h2>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col">
+                <p>
+                    {{self.paragraph}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

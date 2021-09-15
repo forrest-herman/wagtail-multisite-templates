@@ -1,0 +1,36 @@
+<!-- Classic - Contact Form Split -->
+
+<section id="img-form-split-left" class="bg-color-1">
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center">
+
+            {% for col in "x"|ljust:"2" %}
+
+            <div class="col-md-6 section-title half-text-block-container h-padding-large-md v-padding-large height-fit-content col-bg-image  {% if self.img_position == "right" and forloop.counter == 2 or self.img_position == "left" and forloop.counter == 1 %}hidden-childs" style="background-image: url({{self.half_img.url}})"{% else %}"{% endif %}>
+                <h2 class="text-start">{{self.title}}</h2>
+                <p>{{self.section_paragraph}}</p>
+                <form action="{{self.form_action}}" class="form-connect">
+                {% for field in self.formfields_stream_container %}
+                <div class="row form-group">
+                    <div class="col-12">
+                        {% if field.value.label %}<label for="{{field.value.field_id}}">{{field.value.label}}</label>{% endif %}
+                        <!-- prettier-ignore -->
+                        <{% if field.value.field_type == "message" %}textarea cols="5" rows="3"{% else %}input{% endif %} type="{{field.value.field_type}}" id="{{field.value.field_id}}" name="{{field.value.field_name}}" class="form-control resize-none {% if not self.show_form_bg %}no-outline{% endif %}" placeholder="{{field.value.placeholder}}" {% if field.value.is_required %}required=""{% endif %} {% if field.value.field_type == "message" %}></textarea>{% else %}/>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div>
+                            <input type="submit" value="{{self.btn_text}}" class="btn btn-color-{% if self.bg_color == "1" %}2{% else %}1{% endif %} btn-sm btn-wide" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>

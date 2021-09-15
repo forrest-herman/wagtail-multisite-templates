@@ -1,0 +1,12 @@
+<section id="page-head" class="bg-color-{{self.bg_color}} py-3">
+    <div class="container container-sm">
+        <div class="row page-hero">
+            <div class="col-12 d-flex justify-content-start align-items-center">
+                <div class="hero-title text-left text-shadow">
+                    <h2>{% if self.title %}{{self.title}}{% else %}{{page.title}}{% endif %}</h2>
+                    <h4>{{self.subtitle}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

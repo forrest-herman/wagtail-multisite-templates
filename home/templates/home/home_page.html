@@ -1,0 +1,52 @@
+<!-- prettier-ignore -->
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+<!-- prettier-ignore -->
+{% block content %}
+{% comment %} {% if parent.site_loader_image.url %}
+<section class="navbar-block"></section>
+<script>
+    ;(function () {
+        // Loading page
+        var loaderPage = function () {
+            $(".loader").fadeOut("slow")
+        }
+
+        $(function () {
+            // goToTop()
+            loaderPage()
+        })
+    })()
+</script>
+{% endif %} {% endcomment %}
+<!-- prettier-ignore -->
+{% for block in page.content %}
+        {% include_block block %}
+    {% endfor %}
+
+{% endblock content %}
+
+{% block extra_js %}
+    {% if parent.shrink_navbar_scroll and parent.navbar_fixed %}
+<script>
+    window.onscroll = function () {
+        scrollFunction()
+    }
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").classList.add("shrink")
+            //document.getElementById("logo").style.width = "160px"
+        } else {
+            // document.getElementById("logo").style.width = "190px"
+            document.getElementById("navbar").classList.remove("shrink")
+        }
+    }
+</script>
+{% endif %} {% endblock extra_js %}

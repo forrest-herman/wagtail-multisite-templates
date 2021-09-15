@@ -1,0 +1,19 @@
+<section id="intro" class="margin-top-large">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="">{{self.title1}} </span>{% endif %}
+            {% if self.title2 %}<span class="text-color2">{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %} {% if self.paragraph %}
+    <div class="container container-center">
+        <div class="row">
+            <div class="col">
+                <h4 class="{{self.text_align}}">{{self.paragraph}}</h4>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>

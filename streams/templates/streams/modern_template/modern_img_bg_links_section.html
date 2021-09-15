@@ -1,0 +1,19 @@
+<section id="img-section-readmore-left" class="margin-top-large section-box-shadow box-picture" style="background-image: url({{self.bg_img.url}})">
+    {% if self.title1 or self.title2 %}
+    <div class="row text-center {% if self.long_title_TRUE %}section-long-title section-long-title-offset{% else %}section-short-title-offset{% endif %}">
+        <!-- prettier-ignore -->
+        <h2>
+            {% if self.title1 %}<span class="" {% if self.long_title_TRUE %}style="float: left"{% endif %}>{{self.title1}} </span>{% endif %}
+            {% if self.long_title_TRUE %}<br />{% endif %}
+            {% if self.title2 %}<span class="text-color2" {% if self.long_title_TRUE %}style="float: right"{% endif %}>{{self.title2}}</span>{% endif %}
+        </h2>
+    </div>
+    {% endif %}
+    <div class="section-box min-fit-content">
+        {% for button in self.links_stream_container %}
+        <div class="readmore-card translate-{% if self.content_align == "left" %}right{% else %}left{% endif %} item-align-{{self.content_align}} contact-item bg-color-{{self.btn_color}}">
+            <a href="{{button.value.link}}"><h4>{{button.value.text}}</h4></a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
