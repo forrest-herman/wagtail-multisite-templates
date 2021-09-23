@@ -12,7 +12,7 @@ Default login credentials for Wagtail:
 
 https://wagtail-multisite-templates.herokuapp.com/admin/
 
-Username: admin \
-Password: password
+__Username:__ admin \
+__Password:__ password
 
 ![Site Demo](demo.png)
