@@ -2,13 +2,17 @@
 
 Version of Wagtail CMS including multi-site support
 
-## LOGIN DETAILS
+# Live Demo
+
+https://wagtail-multisite-templates.herokuapp.com/
+
+### LOGIN DETAILS
 
 Default login credentials for Wagtail: 
 
 https://wagtail-multisite-templates.herokuapp.com/admin/
 
-Username: admin
-Password: password
+__Username:__ admin \
+__Password:__ password
 
 ![Site Demo](demo.png)
