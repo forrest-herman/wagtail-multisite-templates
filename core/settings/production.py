@@ -1,26 +1,38 @@
+from typing import Tuple
 from .base import *
+import os
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+env = os.environ.copy()
+SECRET_KEY = env["SECRET_KEY"]
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-b+q#m(^^hv^ba_#(1%^#b+h_(=ipucum7)%e+yt^y&t+=weqbz"
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
 
-# SECURITY WARNING: define the correct hosts in production!
+DATABASES["default"] = dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
+
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = [
+    "compressor.filters.css_default.CssAbsoluteFilter",
+    "compressor.filters.cssmin.CSSMinFilter",
+]
+COMPRESS_CSS_HASHING_METHOD = "content"
+
+
+# Allow all host headers
 ALLOWED_HOSTS = ["*"]
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# DEBUG = False
+DEBUG = True
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+MEDIA_URL = "/media/"
 
 try:
     from .local import *
