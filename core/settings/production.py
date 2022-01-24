@@ -1,6 +1,7 @@
 from typing import Tuple
 from .base import *
 import os
+import dj_database_url
 
 env = os.environ.copy()
 SECRET_KEY = env["SECRET_KEY"]
