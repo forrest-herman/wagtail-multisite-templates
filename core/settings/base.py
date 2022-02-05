@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "cloudinary_storage",
     "django.contrib.staticfiles",
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.styleguide",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     "wagtail_color_panel",
     "wagtailuiplus",
     "storages",
+    "cloudinary",
 ]
 
 MIDDLEWARE = [
@@ -176,6 +178,12 @@ WAGTAIL_SITE_NAME = "core"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = "http://example.com"
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": "hmt3tirom",
+    "API_KEY": "218788968996151",
+    "API_SECRET": "Jc0V3Kk3KTg_R8FBBFmfSH_EX5A",
+}
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # AWS_STORAGE_BUCKET_NAME = "atomic-waas"
 # AWS_ACCESS_KEY_ID = "Q6V3HFYPTMJBNQHHSEGP"
